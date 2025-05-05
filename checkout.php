@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("graduationstore-project.c7m0qk1ncfgl.us-east-1.rds.amazonaws.com", "admin", "admin_1234", "graduation_store");
+$conn = new mysqli("localhost", "root", "", "graduation_store");
 
 $cart = $_SESSION['cart'] ?? [];
 if (empty($cart)) {
