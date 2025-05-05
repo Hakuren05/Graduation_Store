@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "graduation_store");
+$conn = new mysqli("graduationstore-db.crksfzhll049.us-east-1.rds.amazonaws.com", "admin", "admin_1234", "graduation_store");
 $result = $conn->query("SELECT * FROM products");
 ?>
 <?php include 'navbar.php'; ?>
