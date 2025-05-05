@@ -40,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
+<?php include 'navbar.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #b71c1c;
         }
 
+        
     </style>
 </head>
 <body>

@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php include 'navbar.php' ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,29 @@
             font-size: 28px;
             font-weight: bold;
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Navbar Styling */
+        nav {
+            background-color: #004d40;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        nav a.active {
+            font-weight: bold;
+            border-bottom: 2px solid #ffffff;
         }
 
         .hero {
@@ -106,10 +130,68 @@
             font-size: 14px;
             color: #333;
         }
+
+        /* Footer Styling */
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .hero-image img {
+                width: 80%;
+                margin: 0;
+            }
+
+            .cta-button {
+                width: 100%;
+                padding: 14px;
+            }
+
+            .feature-box {
+                width: 45%;
+                margin: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature-box {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 28px;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
     <div class="header">Graduation Gift Shop</div>
 
     <div class="hero">
@@ -145,5 +227,10 @@
             <p>Perfect for loved ones</p>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Graduation Gift Shop | <a href="privacy.php">Privacy Policy</a> | <a href="terms.php">Terms & Conditions</a></p>
+    </footer>
 </body>
 </html>

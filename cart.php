@@ -34,6 +34,8 @@ if (!empty($cart)) {
     }
 }
 ?>
+<?php include 'navbar.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -126,6 +128,7 @@ if (!empty($cart)) {
             background-color: #00796b;
         }
 
+        
     </style>
 </head>
 <body>
@@ -133,7 +136,7 @@ if (!empty($cart)) {
 <div class="container">
     <?php if (empty($cart)) { ?>
         <p>Your cart is empty.</p>
-        <a href="index.php" class="checkout-link">← Back to Shop</a>
+        <a href="items.php" class="checkout-link">← Back to Shop</a>
     <?php } else { ?>
         <form method="post">
             <table>
@@ -169,7 +172,7 @@ if (!empty($cart)) {
         </form>
         <p class="total">Total: RM<?php echo number_format($total, 2); ?></p>
         <a href="checkout.php" class="checkout-link">Proceed to Checkout</a>
-        <a href="index.php" class="continue-btn">← Continue Shopping</a>
+        <a href="items.php" class="continue-btn">← Continue Shopping</a>
     <?php } ?>
 </div>
 </body>

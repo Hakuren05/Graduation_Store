@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit;
 }
 ?>
+<?php include 'navbar.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,13 +79,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <header>Product Details</header>
 <div class="container">
-    <img src="<?php echo $product['image']; ?>" alt="Product Image">
+    <form method="post">
     <h2><?php echo $product['name']; ?></h2>
     <p>Price: RM<?php echo number_format($product['price'], 2); ?></p>
+    <p>Description:<br><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
+    
     <form method="post">
         <button type="submit">Add to Cart</button>
     </form>
-    <a href="index.php">← Back to Shop</a>
+    <a href="items.php">← Back to Shop</a>
+
 </div>
 </body>
 </html>
