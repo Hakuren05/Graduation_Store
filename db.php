@@ -1,7 +1,7 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
+$host = 'graduationstore-project.c7m0qk1ncfgl.us-east-1.rds.amazonaws.com';
+$user = 'admin';
+$pass = 'admin_1234';
 $dbname = 'graduation_store';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
