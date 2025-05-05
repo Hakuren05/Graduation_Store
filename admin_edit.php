@@ -12,7 +12,7 @@ if (isset($_POST['update'])) {
     $updateQuery = "UPDATE products SET name='$name', price='$price', description='$description' WHERE id=$id";
 
     if ($conn->query($updateQuery)) {
-        echo "<script>alert('Product updated successfully.'); window.location.href='edit_products.php';</script>";
+        echo "<script>alert('Product updated successfully.'); window.location.href='admin_edit.php';</script>";
     } else {
         echo "<script>alert('Error updating product: " . $conn->error . "');</script>";
     }

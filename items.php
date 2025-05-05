@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("graduationstore-db.crksfzhll049.us-east-1.rds.amazonaws.com", "admin", "admin_1234", "graduation_store");
+$conn = new mysqli("localhost", "root", "", "graduation_store");
 $result = $conn->query("SELECT * FROM products");
 ?>
 <?php include 'navbar.php'; ?>
@@ -37,8 +37,11 @@ $result = $conn->query("SELECT * FROM products");
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
             justify-content: center;
         }
+
         .product {
             width: 220px;
             background-color: #ffffff;
@@ -48,6 +51,10 @@ $result = $conn->query("SELECT * FROM products");
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .product:hover {
             transform: translateY(-10px);
@@ -102,6 +109,7 @@ $result = $conn->query("SELECT * FROM products");
    <a href="index.php" class="back-button">Back to Home</a>
 <div class="container">
     <h2>Our Products</h2>
+    <div class="product-grid">
     <?php while ($row = $result->fetch_assoc()) { ?>
         <div class="product">
             <img src="<?php echo $row['image']; ?>" alt="Product Image">
@@ -110,6 +118,7 @@ $result = $conn->query("SELECT * FROM products");
             <a href="product.php?id=<?php echo $row['id']; ?>">View Details</a>
         </div>
     <?php } ?>
+</div>
     
 </div>
 </body>

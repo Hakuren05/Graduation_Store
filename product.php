@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = new mysqli("graduationstore-db.crksfzhll049.us-east-1.rds.amazonaws.com", "admin", "admin_1234", "graduation_store");
+$conn = new mysqli("localhost", "root", "", "graduation_store");
 
 $id = $_GET['id'];
 $result = $conn->query("SELECT * FROM products WHERE id=$id");
