@@ -17,19 +17,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $fileTmpPath = $_FILES['image']['tmp_name'];
         $fileName = basename($_FILES['image']['name']);
-        $s3Key = "product_images/" . time() . "_" . preg_replace('/[^a-zA-Z0-9._-]/', '_', $fileName);
-        $bucketName = "graduationstore-bucket"; 
+        $safeFileName = preg_replace('/[^a-zA-Z0-9._-]/', '_', $fileName);
+        $s3Key = "product_images/" . time() . "_" . $safeFileName;
+        $bucketName = "graduationstore-bucket";
 
-        // Run AWS CLI command to upload image
-        $command = escapeshellcmd("aws s3 cp $fileTmpPath s3://$bucketName/$s3Key --acl public-read 2>&1");
+        // Securely build shell command using escapeshellarg
+        $command = "aws s3 cp " . escapeshellarg($fileTmpPath) . 
+                   " s3://" . escapeshellarg($bucketName) . "/" . escapeshellarg($s3Key) . 
+                   " --acl public-read 2>&1";
+
         $output = shell_exec($command);
 
-        // Check if upload appears successful
-        if (strpos($output, 'upload:') !== false) {
-            $imageUrl = "https://$bucketName.s3.amazonaws.com/$s3Key";
+        // Optional: Log the command output for debugging
+        file_put_contents('upload_log.txt', $output);
 
-            // Save product to database
-            $stmt = $conn->prepare("INSERT INTO products (name, price, description, image_url) VALUES (?, ?, ?, ?)");
+        if (strpos($output, 'upload:') !== false) {
+            $imageUrl = "https://$bucketName.s3.amazonaws.com/" . rawurlencode($s3Key);
+
+            // Save product to database — make sure 'image' column exists
+            $stmt = $conn->prepare("INSERT INTO products (name, price, description, image) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("sdss", $name, $price, $desc, $imageUrl);
 
             if ($stmt->execute()) {
