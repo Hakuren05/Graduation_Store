@@ -195,6 +195,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 transform: translateY(0);
             }
         }
+        .register-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: graytext;
+    color: #009688;
+    font-weight: bold;
+    border: 2px solid graytext;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: green;
+    color: white;
+    border-color: green;
+}
+
     </style>
 </head>
 <body>
@@ -219,7 +238,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php } ?>
 
     <div class="footer">
-        <p>Don't have an account? <a href="register.php">Sign up here</a></p>
+    <p>Don't have an account?</p>
+    <a href="register.php" class="register-btn">Register</a>
     </div>
 </div>
 
