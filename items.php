@@ -16,7 +16,7 @@ $result = $conn->query("SELECT * FROM products");
             padding: 0;
         }
         header {
-            background-color: #1e3d58;
+            background-color: #00796b;
             color: white;
             padding: 25px 20px;
             text-align: center;
@@ -84,7 +84,7 @@ $result = $conn->query("SELECT * FROM products");
         }
         .back-button {
             display: inline-block;
-            background-color: #1e3d58;
+            background-color: #00796b;
             color: white;
             padding: 14px 20px;
             border-radius: 8px;

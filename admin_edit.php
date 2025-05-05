@@ -1,5 +1,23 @@
 <?php include 'navbar.php'; ?>
 <?php include 'db_connect.php'; ?>
+
+<?php
+// Handle the form submission
+if (isset($_POST['update'])) {
+    $id = $_POST['id'];
+    $name = $conn->real_escape_string($_POST['name']);
+    $price = $_POST['price'];
+    $description = $conn->real_escape_string($_POST['description']);
+
+    $updateQuery = "UPDATE products SET name='$name', price='$price', description='$description' WHERE id=$id";
+
+    if ($conn->query($updateQuery)) {
+        echo "<script>alert('Product updated successfully.'); window.location.href='edit_products.php';</script>";
+    } else {
+        echo "<script>alert('Error updating product: " . $conn->error . "');</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
